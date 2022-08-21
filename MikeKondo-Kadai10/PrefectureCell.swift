@@ -8,7 +8,6 @@
 import UIKit
 
 class PrefectureCell: UITableViewCell {
-
     static let identifier = "PrefecCell"
     static let nibName = "PrefectureCell"
 

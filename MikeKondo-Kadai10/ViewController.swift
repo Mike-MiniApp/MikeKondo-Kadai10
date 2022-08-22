@@ -7,12 +7,6 @@
 
 import UIKit
 
-enum ColorType: Int {
-    case red
-    case green
-    case blue
-}
-
 class ViewController: UIViewController {
     // MARK: - UI Parts
     @IBOutlet weak private var tableView: UITableView!
@@ -38,20 +32,9 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: PrefectureCell.identifier, for: indexPath) as! PrefectureCell
-        cell.prefectureNameLabel.text = prefectures[indexPath.row]
-        cell.prefectureNumberLabel.text = "\(indexPath.row + 1)番目の都道府県です"
 
-        let color = ColorType(rawValue: indexPath.row % 3)
-        switch color {
-        case .red:
-            cell.backgroundColor = .red
-        case .green:
-            cell.backgroundColor = .green
-        case .blue:
-            cell.backgroundColor = .blue
-        default:
-            break
-        }
+        cell.configure(name: prefectures[indexPath.row], index: indexPath.row)
+
         return cell
     }
 }
